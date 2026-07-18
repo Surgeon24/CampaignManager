@@ -1,0 +1,1 @@
+INSERT INTO emerald_account (funds) VALUES (10000.00);

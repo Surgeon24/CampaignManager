@@ -1,0 +1,63 @@
+<div class="card p-4 mb-4 shadow-sm border-0 bg-light">
+  <h5 class="mb-3">{{ isEditMode ? 'Edit Campaign' : 'Add New Campaign' }}</h5>
+  <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <form (ngSubmit)="submitForm()" #form="ngForm">
+    <div class="row g-3">
+
+      <div class="col-md-6">
+        <label class="form-label text-muted small fw-bold mb-1">Campaign Name</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="campaign.name" required #nameField="ngModel" [ngClass]="{'is-invalid': nameField.invalid && (nameField.dirty || nameField.touched)}">
+        <div class="invalid-feedback">Campaign name is mandatory.</div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label text-muted small fw-bold mb-1">Keywords</label>
+        <input type="text" class="form-control" name="keywords" [(ngModel)]="campaign.keywords" list="keywordsList" required #kwField="ngModel" [ngClass]="{'is-invalid': kwField.invalid && (kwField.dirty || kwField.touched)}">
+        <datalist id="keywordsList">
+          <option value="electronics, smartphones, gadgets"></option>
+          <option value="clothing, shoes, summer"></option>
+          <option value="home, furniture, decor"></option>
+          <option value="sports, fitness, equipment"></option>
+        </datalist>
+        <div class="invalid-feedback">Keywords are mandatory.</div>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label text-muted small fw-bold mb-1">Bid Amount ($)</label>
+        <input type="number" class="form-control" name="bidAmount" [(ngModel)]="campaign.bidAmount" required min="0.01" #bidField="ngModel" [ngClass]="{'is-invalid': bidField.invalid && (bidField.dirty || bidField.touched)}">
+        <div class="invalid-feedback">Minimum bid is 0.01.</div>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label text-muted small fw-bold mb-1">Campaign Fund ($)</label>
+        <input type="number" class="form-control" name="campaignFund" [(ngModel)]="campaign.campaignFund" required min="0.01" #fundField="ngModel" [ngClass]="{'is-invalid': fundField.invalid && (fundField.dirty || fundField.touched)}">
+        <div class="invalid-feedback">Minimum fund is 0.01.</div>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label text-muted small fw-bold mb-1">Town</label>
+        <select class="form-select" name="town" [(ngModel)]="campaign.town" required>
+          <option *ngFor="let t of towns" [value]="t">{{ t }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label text-muted small fw-bold mb-1">Radius (km)</label>
+        <input type="number" class="form-control" name="radius" [(ngModel)]="campaign.radius" required min="1" #radiusField="ngModel" [ngClass]="{'is-invalid': radiusField.invalid && (radiusField.dirty || radiusField.touched)}">
+        <div class="invalid-feedback">Radius must be at least 1 km.</div>
+      </div>
+
+      <div class="col-md-12 d-flex align-items-center mt-4">
+        <div class="form-check form-switch me-4">
+          <input class="form-check-input" type="checkbox" role="switch" id="statusSwitch" name="status" [(ngModel)]="campaign.status">
+          <label class="form-check-label" for="statusSwitch">Status (On/Off)</label>
+        </div>
+        <button type="submit" class="btn btn-primary px-4" [disabled]="!form.valid">
+          {{ isEditMode ? 'Update' : 'Create Campaign' }}
+        </button>
+        <button type="button" class="btn btn-secondary ms-2" *ngIf="isEditMode" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
