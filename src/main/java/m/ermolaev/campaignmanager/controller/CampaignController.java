@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*") // place for real campaign's domain
 @RequiredArgsConstructor
 public class CampaignController {
 
