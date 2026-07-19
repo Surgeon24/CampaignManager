@@ -2,6 +2,7 @@
 FROM gradle:jdk21 AS build
 WORKDIR /app
 COPY . .
+RUN chmod +x ./gradlew
 RUN ./gradlew build -x test
 
 # Stage 2: Runtime Environment
