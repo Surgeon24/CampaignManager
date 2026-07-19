@@ -1,9 +1,9 @@
 # Step 1: Assembling the Project
-FROM gradle:jdk21 AS build
+# gradle 8.7, JDK 21
+FROM gradle:8.7-jdk21 AS build
 WORKDIR /app
 COPY . .
-RUN chmod +x ./gradlew
-RUN ./gradlew build -x test
+RUN gradle build -x test
 
 # Stage 2: Runtime Environment
 FROM eclipse-temurin:21-jre
