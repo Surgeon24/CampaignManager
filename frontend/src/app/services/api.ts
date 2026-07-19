@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 // interfaces (DTO)
 export interface EmeraldAccount {
@@ -23,9 +24,9 @@ export interface Campaign {
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'http://localhost:8080/api';
+  private baseUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAccount(): Observable<EmeraldAccount> {
     return this.http.get<EmeraldAccount>(`${this.baseUrl}/account`);
