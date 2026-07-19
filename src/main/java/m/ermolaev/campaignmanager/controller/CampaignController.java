@@ -40,14 +40,14 @@ public class CampaignController {
 
     // 4. delete campaign
     @DeleteMapping("/campaigns/{id}")
-    public ResponseEntity<Void> deleteCampaign(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteCampaign(@PathVariable("id") Long id) {
         campaignService.deleteCampaign(id);
         return ResponseEntity.noContent().build();
     }
 
     // 5. update campaign
     @PutMapping("/campaigns/{id}")
-    public ResponseEntity<Campaign> updateCampaign(@PathVariable Long id, @Valid @RequestBody Campaign campaign) {
+    public ResponseEntity<Campaign> updateCampaign(@PathVariable("id") Long id, @Valid @RequestBody Campaign campaign) {
         return ResponseEntity.ok(campaignService.updateCampaign(id, campaign));
     }
 }
