@@ -2,12 +2,20 @@
 
 A full-stack web application for managing advertising campaigns. This project allows sellers to create, read, update, and delete (CRUD) campaigns for their products, with integrated fund management linked to an internal "Emerald Account".
 
+## 🌐 Live Demo
+The application is fully deployed in the cloud and can be tested live without any local setup:
+* **Frontend (Live UI):** [https://campaignmanagerfuturum.netlify.app/](https://campaignmanagerfuturum.netlify.app/)
+* **Backend (Swagger API Docs):** [https://campaignmanager-9akn.onrender.com/swagger-ui/index.html](https://campaignmanager-9akn.onrender.com/swagger-ui/index.html)
+
+*(Note: The backend is hosted on Render's free tier. It may take 40-50 seconds to wake up for the first request.)*
+
 ## 🚀 Technologies Used
-*   **Backend:** Java, Spring Boot (Web, Data JPA, Validation)
+*   **Backend:** Java, Spring Boot 3.2 (Web, Data JPA, Validation)
 *   **Database:** H2 Database (In-Memory)
 *   **Frontend:** Angular 18, Bootstrap 5, HTML/CSS
 *   **Documentation:** OpenAPI 3.0 (Swagger UI)
 *   **Build Tool:** Gradle
+*   **DevOps & Deployment:** Docker, Render (Backend Hosting), Netlify (Frontend Hosting)
 
 ## ⚙️ Core Features & Business Logic
 *   **Full CRUD Operations:** Manage campaigns with dedicated RESTful endpoints.
